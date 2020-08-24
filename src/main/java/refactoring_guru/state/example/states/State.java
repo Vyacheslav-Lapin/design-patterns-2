@@ -1,12 +1,13 @@
 package refactoring_guru.state.example.states;
 
+import lombok.experimental.PackagePrivate;
 import refactoring_guru.state.example.ui.Player;
 
 /**
  * Common interface for all states.
  */
 public abstract class State {
-    Player player;
+    @PackagePrivate Player player;
 
     /**
      * Context passes itself through the state constructor. This may help a

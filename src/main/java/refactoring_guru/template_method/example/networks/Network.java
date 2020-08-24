@@ -1,11 +1,13 @@
 package refactoring_guru.template_method.example.networks;
 
+import lombok.experimental.PackagePrivate;
+
 /**
  * Base class of social network.
  */
 public abstract class Network {
-    String userName;
-    String password;
+    @PackagePrivate String userName;
+    @PackagePrivate String password;
 
     Network() {}
 
