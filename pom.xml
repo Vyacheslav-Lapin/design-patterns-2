@@ -151,7 +151,7 @@
           <configuration>
             <compilerArgs>
               <arg>--enable-preview</arg>
-              <arg>-Xplugin:Manifold</arg>
+              <!--<arg>-Xplugin:Manifold</arg>-->
             </compilerArgs>
           </configuration>
         </plugin>
