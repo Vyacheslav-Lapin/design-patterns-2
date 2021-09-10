@@ -4,7 +4,7 @@ package com.xpinjection.patterns.prototype.canonical;
  * @author Alimenkou Mikalai
  */
 public interface Figure {
-    double getSquare();
+  double getSquare();
 
-    Figure clone();
+  Figure clone();
 }

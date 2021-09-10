@@ -27,7 +27,8 @@ public class Twitter extends Network {
     if (messagePosted) {
       System.out.println("Message: '" + new String(data) + "' was posted on Twitter");
       return true;
-    } else {
+    }
+    else {
       return false;
     }
   }
@@ -45,7 +46,8 @@ public class Twitter extends Network {
         Thread.sleep(500);
         i++;
       }
-    } catch (InterruptedException ex) {
+    }
+    catch (InterruptedException ex) {
       ex.printStackTrace();
     }
   }

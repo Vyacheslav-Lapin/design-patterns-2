@@ -6,6 +6,7 @@ import refactoring_guru.mediator.example.mediator.Mediator;
  * Common component interface.
  */
 public interface Component {
-    void setMediator(Mediator mediator);
-    String getName();
+  void setMediator(Mediator mediator);
+
+  String getName();
 }

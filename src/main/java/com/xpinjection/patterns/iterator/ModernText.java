@@ -6,5 +6,5 @@ import java.util.stream.Stream;
  * @author Alimenkou Mikalai
  */
 public interface ModernText {
-    Stream<String> linesStream();
+  Stream<String> linesStream();
 }

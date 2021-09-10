@@ -1,13 +1,14 @@
 package com.xpinjection.patterns.factorymethod.canonical;
 
-import static lombok.AccessLevel.PRIVATE;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+
+import static lombok.AccessLevel.PRIVATE;
 
 @ToString
 @RequiredArgsConstructor

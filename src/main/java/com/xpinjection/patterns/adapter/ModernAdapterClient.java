@@ -1,27 +1,29 @@
 package com.xpinjection.patterns.adapter;
 
-import com.xpinjection.patterns.adapter.canonical.CharCounterTask;
-
-import java.util.concurrent.ExecutorService;
+import java.util.Arrays;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
+
+import com.xpinjection.patterns.adapter.canonical.CharCounterTask;
+import lombok.experimental.ExtensionMethod;
+import lombok.val;
 
 /**
  * @author Alimenkou Mikalai
  */
+@ExtensionMethod(Arrays.class)
 public class ModernAdapterClient {
-    public static void main(String[] args) throws InterruptedException {
-        ExecutorService executor = Executors.newFixedThreadPool(3);
+  public static void main(String[] args) throws InterruptedException {
+    val executor = Executors.newFixedThreadPool(3);
 
-        AtomicInteger counter = new AtomicInteger();
-        Stream.of("af", "bdf", "c")
-                .map(s -> new CharCounterTask(s, counter))
-                .forEach(executor::execute);
+    val counter = new AtomicInteger();
+    "af, bdf, c".split(", ").stream()
+        .map(s -> new CharCounterTask(s, counter))
+        .forEach(executor::execute);
 
-        executor.shutdown();
-        executor.awaitTermination(1, TimeUnit.SECONDS);
-        System.out.println("Total count: " + counter.get());
-    }
+    executor.shutdown();
+    executor.awaitTermination(1, TimeUnit.SECONDS);
+    System.out.println("Total count: " + counter.get());
+  }
 }

@@ -1,6 +1,10 @@
 package refactoring_guru.memento.example.shapes;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import lombok.experimental.PackagePrivate;
 
 public abstract class BaseShape implements Shape {
@@ -99,9 +103,9 @@ public abstract class BaseShape implements Shape {
     Graphics2D g2 = (Graphics2D) graphics;
     float dash1[] = {2.0f};
     g2.setStroke(new BasicStroke(1.0f,
-        BasicStroke.CAP_BUTT,
-        BasicStroke.JOIN_MITER,
-        2.0f, dash1, 0.0f));
+                                 BasicStroke.CAP_BUTT,
+                                 BasicStroke.JOIN_MITER,
+                                 2.0f, dash1, 0.0f));
   }
 
   void disableSelectionStyle(Graphics graphics) {
@@ -114,7 +118,8 @@ public abstract class BaseShape implements Shape {
   public void paint(Graphics graphics) {
     if (isSelected()) {
       enableSelectionStyle(graphics);
-    } else {
+    }
+    else {
       disableSelectionStyle(graphics);
     }
 

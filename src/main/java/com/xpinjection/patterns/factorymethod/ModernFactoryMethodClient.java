@@ -1,13 +1,13 @@
 package com.xpinjection.patterns.factorymethod;
 
+import java.util.function.Function;
+
 import com.xpinjection.patterns.factorymethod.canonical.Document;
 import com.xpinjection.patterns.factorymethod.canonical.DocumentFactory;
 import com.xpinjection.patterns.factorymethod.canonical.JsonDocument;
-import java.util.function.Function;
 import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.experimental.Accessors;
-import lombok.val;
 import org.jetbrains.annotations.NotNull;
 
 /**
