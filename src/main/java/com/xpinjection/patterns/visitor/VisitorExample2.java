@@ -1,13 +1,14 @@
 package com.xpinjection.patterns.visitor;
 
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 
 public class VisitorExample2 {
 
   public static void main(String... __) {
-    Visit[] visits = {new D(), new E(), new F()};
-    for (Visit visit : visits)
-      visit.visit(new Visitor1());
+    Element[] visits = {new G()}; // new D(), new E(), new F(),
+    for (Element visit : visits)
+      visit.accept(new Visitor1());
   }
 }
 
@@ -15,6 +16,9 @@ interface Visitor {
   void method(D visit);
   void method(E visit);
   void method(F visit);
+  default void method(G visit) {
+    method((F) visit);
+  }
 }
 
 class Visitor1 implements Visitor {
@@ -30,35 +34,47 @@ class Visitor1 implements Visitor {
   public void method(F f) {
     System.out.println("f = " + f);
   }
+
+  public void method(G g) {
+    System.out.println("g = " + g);
+  }
 }
 
-interface Visit {
-  void visit(Visitor visitor);
+sealed interface Element permits D, E, F {
+  void accept(Visitor visitor);
 }
 
 @ToString
-class D implements Visit {
+final class D implements Element {
 
   @Override
-  public void visit(Visitor visitor) {
+  public void accept(@NotNull Visitor visitor) {
     visitor.method(this);
   }
 }
 
 @ToString
-class E implements Visit {
+final class E implements Element {
 
   @Override
-  public void visit(Visitor visitor) {
+  public void accept(@NotNull Visitor visitor) {
     visitor.method(this);
   }
 }
 
 @ToString
-class F implements Visit {
+sealed class F implements Element permits G {
 
   @Override
-  public void visit(Visitor visitor) {
+  public void accept(@NotNull Visitor visitor) {
+    visitor.method(this);
+  }
+}
+
+@ToString
+final class G extends F {
+  @Override
+  public void accept(@NotNull Visitor visitor) {
     visitor.method(this);
   }
 }
